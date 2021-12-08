@@ -16,6 +16,7 @@
 
 package com.android.example.github.vo
 
+import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import com.google.gson.annotations.SerializedName
@@ -40,7 +41,9 @@ data class Contributor(
 ) {
 
     // does not show up in the response but set in post processing.
+    @NonNull
     lateinit var repoName: String
     // does not show up in the response but set in post processing.
+    @NonNull
     lateinit var repoOwner: String
 }
