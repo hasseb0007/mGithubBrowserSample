@@ -20,12 +20,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.android.example.github.repository.RepoRepository
-import com.android.example.github.repository.UserRepository
+import com.invotyx.data.repository.UserRepository
 import com.android.example.github.util.TestUtil
 import com.android.example.github.util.mock
-import com.android.example.github.vo.Repo
-import com.android.example.github.vo.Resource
-import com.android.example.github.vo.User
+import com.invotyx.example.model.Repo
+import com.invotyx.example.model.Resource
+import com.invotyx.example.model.User
 import org.hamcrest.CoreMatchers.notNullValue
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Rule

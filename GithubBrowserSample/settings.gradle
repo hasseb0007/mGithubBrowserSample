@@ -15,3 +15,14 @@
  */
 
 include ':app'
+include ':model'
+include ':executor'
+include ':data:api'
+include ':data:repository'
+include ':data:api-builder'
+include ':data:db'
+include ':testing:testing-release'
+include ':testing:testing-debug'
+include ':feature:login'
+include ':envvar'
+include ':di'

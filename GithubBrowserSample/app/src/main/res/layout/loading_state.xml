@@ -19,13 +19,13 @@
 
     <data>
 
-        <import type="com.android.example.github.vo.Resource" />
+        <import type="com.invotyx.example.model.Resource" />
 
-        <import type="com.android.example.github.vo.Status" />
+        <import type="com.invotyx.example.model.Status" />
 
         <variable
             name="resource"
-            type="Resource" />
+            type="com.invotyx.example.model.Resource" />
 
         <variable
             name="callback"

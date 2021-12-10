@@ -18,24 +18,22 @@ package com.android.example.github.di
 
 import android.app.Application
 import androidx.room.Room
-import com.android.example.github.api.AuthenticationInterceptor
-import com.android.example.github.api.GithubAuthService
-import com.android.example.github.api.GithubService
-import com.android.example.github.db.GithubDb
-import com.android.example.github.db.RepoDao
-import com.android.example.github.db.UserDao
-import com.android.example.github.util.LiveDataCallAdapterFactory
+import com.android.example.github.BuildConfig
+import com.invotyx.api_builder.ApiBuilder
+import com.invotyx.api.GithubAuthService
+import com.invotyx.api.GithubService
+import com.invotyx.data.db.GithubDb
+import com.invotyx.data.db.RepoDao
+import com.invotyx.data.db.UserDao
+import com.invotyx.envvar.EnvVar
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module(includes = [ViewModelModule::class])
 class AppModule {
-    @Singleton
+    /*@Singleton
     @Provides
     fun provideGithubService(
         authenticationInterceptor: AuthenticationInterceptor
@@ -62,6 +60,36 @@ class AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(GithubAuthService::class.java)
+    }*/
+
+    @Singleton
+    @Provides
+    fun provideEnvVar(): EnvVar {
+        return object : EnvVar {
+            override val GITHUB_CLIENT_ID = BuildConfig.GITHUB_CLIENT_ID
+            override val GITHUB_CLIENT_SECRET = BuildConfig.GITHUB_CLIENT_SECRET
+        }
+    }
+
+    @Singleton
+    @Provides
+    fun provideGithubService(
+        apiBuilder: ApiBuilder
+    ): GithubService {
+        return apiBuilder.buildGithubService(
+            baseUrl = "https://api.github.com/",
+            loggingLevel = HttpLoggingInterceptor.Level.BODY
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideGithubAuthService(
+        apiBuilder: ApiBuilder
+    ): GithubAuthService {
+        return apiBuilder.buildGithubAuthService(
+            baseUrl = "https://github.com/"
+        )
     }
 
     @Singleton

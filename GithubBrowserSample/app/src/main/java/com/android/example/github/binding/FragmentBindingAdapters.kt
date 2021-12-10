@@ -20,7 +20,7 @@ import android.graphics.drawable.Drawable
 import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-import com.android.example.github.testing.OpenForTesting
+import com.invotyx.testing.testing_debug.OpenForTesting
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestListener
 import javax.inject.Inject

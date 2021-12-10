@@ -17,9 +17,11 @@
 package com.android.example.github.api
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.android.example.github.util.LiveDataCallAdapterFactory
+import com.invotyx.api_builder.LiveDataCallAdapterFactory
 import com.android.example.github.util.LiveDataTestUtil.getValue
-import com.android.example.github.vo.User
+import com.invotyx.api.ApiSuccessResponse
+import com.invotyx.api.GithubService
+import com.invotyx.example.model.User
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.Okio

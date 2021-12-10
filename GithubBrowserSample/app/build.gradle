@@ -24,15 +24,15 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 allOpen {
     // allows mocking for classes w/o directly opening them for release builds
-    annotation 'com.android.example.github.testing.OpenClass'
+    annotation 'com.invotyx.testing.testing_debug.OpenClass'
 }
 android {
-    compileSdkVersion 31
-    buildToolsVersion '31.0.0'
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
         applicationId "com.android.example.github"
-        minSdkVersion 21
-        targetSdkVersion 31
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.android.example.github.util.GithubTestRunner"
@@ -72,8 +72,24 @@ android {
 jacoco {
     toolVersion = "0.7.4+"
 }
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
+    implementation project(":model")
+    implementation project(":data:api")
+    implementation project(":data:repository")
+    implementation project(":data:api-builder")
+    implementation project(":data:db")
+    implementation project(":executor")
+    implementation project(":feature:login")
+    implementation project(":envvar")
+    implementation project(":di")
+
+    releaseImplementation project(":testing:testing-release")
+    debugImplementation project(":testing:testing-debug")
+
     implementation deps.app_compat
     implementation deps.recyclerview
     implementation deps.cardview
@@ -81,14 +97,9 @@ dependencies {
     implementation deps.core_ktx
     implementation deps.transition
     implementation deps.navigation.fragment_ktx
-    implementation deps.room.runtime
     implementation deps.lifecycle.livedata_ktx
     implementation deps.lifecycle.runtime_ktx
     implementation deps.lifecycle.java8
-    implementation deps.browser
-    implementation deps.retrofit.runtime
-    implementation deps.retrofit.gson
-    implementation deps.okhttp_logging_interceptor
     implementation deps.glide.runtime
 
     implementation deps.dagger.runtime
@@ -100,12 +111,8 @@ dependencies {
 
     implementation deps.timber
 
-    implementation deps.kotpref.core
-    implementation deps.kotpref.initializer
-
     kapt deps.dagger.android_support_compiler
     kapt deps.dagger.compiler
-    kapt deps.room.compiler
     kapt deps.lifecycle.compiler
 
     testImplementation deps.junit

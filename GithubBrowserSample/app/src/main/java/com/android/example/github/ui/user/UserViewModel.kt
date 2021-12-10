@@ -21,12 +21,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import com.android.example.github.repository.RepoRepository
-import com.android.example.github.repository.UserRepository
-import com.android.example.github.testing.OpenForTesting
+import com.invotyx.data.repository.UserRepository
+import com.invotyx.testing.testing_debug.OpenForTesting
 import com.android.example.github.util.AbsentLiveData
-import com.android.example.github.vo.Repo
-import com.android.example.github.vo.Resource
-import com.android.example.github.vo.User
+import com.invotyx.example.model.Repo
+import com.invotyx.example.model.Resource
+import com.invotyx.example.model.User
 import javax.inject.Inject
 
 @OpenForTesting

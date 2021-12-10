@@ -21,12 +21,13 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.android.example.github.api.ApiResponse
 import com.android.example.github.util.ApiUtil
 import com.android.example.github.util.CountingAppExecutors
 import com.android.example.github.util.InstantAppExecutors
 import com.android.example.github.util.mock
-import com.android.example.github.vo.Resource
+import com.invotyx.api.ApiResponse
+import com.invotyx.data.repository.NetworkBoundResource
+import com.invotyx.example.model.Resource
 import okhttp3.MediaType
 import okhttp3.ResponseBody
 import org.hamcrest.CoreMatchers.`is`
